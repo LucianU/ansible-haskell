@@ -1,0 +1,20 @@
+---
+- name: install the repo key
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 575159689BEFB442
+    state: present
+  sudo: yes
+
+- name: add the repo
+  apt_repository:
+    repo: 'deb http://download.fpcomplete.com/ubuntu trusty main'
+    state: present
+  sudo: yes
+
+- name: install stack
+  apt:
+    name: stack
+    update_cache: yes
+    state: present
+  sudo: yes
